@@ -1,7 +1,16 @@
 .container
 	.row
 		.col-xs-12
-			= form_for :user, url: users_path do |f|
+			- if @user.errors.any?
+				#errors
+					%p= pluralize(@user.errors.count, ' errors prevented this user from saving')
+
+					%ul
+						- @user.errors.full_messages.each do |error|
+							%li= error
+	.row
+		.col-xs-12
+			= form_for @user do |f|
 				= f.label :roll_num
 				= f.text_field :roll_num, class: 'form-control', placeholder: 'k11-2132'
 
