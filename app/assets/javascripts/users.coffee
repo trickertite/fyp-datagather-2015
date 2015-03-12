@@ -4,6 +4,14 @@ geoLoc = undefined
 showLocation = (position) ->
   latitude = position.coords.latitude
   longitude = position.coords.longitude
+  $.ajax
+	  url: 'http://localhost:3000/users/1/locations'
+	  type: 'post'
+	  contentType: 'application/json'
+	  dataType: 'json'
+	  data: JSON.stringify({"location": {"long": longitude, "lat": latitude}})
+	  success: (data) ->
+	    $('h1').html data
   alert 'Latitude : ' + latitude + ' Longitude: ' + longitude
 
 errorHandler = (err) ->
@@ -15,7 +23,7 @@ errorHandler = (err) ->
 window.getLocationUpdate = ->
   if navigator.geolocation
     # timeout at 60000 milliseconds (60 seconds)
-    options = timeout: 60000
+    options = timeout: 30000
     geoLoc = navigator.geolocation
     watchID = geoLoc.watchPosition(showLocation, errorHandler, options)
   else
