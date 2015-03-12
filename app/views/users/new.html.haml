@@ -1,0 +1,11 @@
+.container
+	.row
+		.col-xs-12
+			= form_for :user, url: users_path do |f|
+				= f.label :roll_num
+				= f.text_field :roll_num, class: 'form-control', placeholder: 'k11-2132'
+
+				= f.label :bus_num
+				= f.text_field :bus_num, class: 'form-control', placeholder: '15'
+
+				= f.submit class: 'btn btn-primary btn-lg'
