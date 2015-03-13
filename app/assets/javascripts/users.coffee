@@ -4,7 +4,7 @@ geoLoc = undefined
 showLocation = (position) ->
   latitude = position.coords.latitude
   longitude = position.coords.longitude
-  userId = $('button.start').data('user-id')
+  userId = $('button.start').data('id')
   $.ajax
 	  url: "http://localhost:3000/users/#{userId}/locations"
 	  type: 'post'
