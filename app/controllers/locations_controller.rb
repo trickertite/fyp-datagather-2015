@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
 		if @location.save
 			render json: @user.locations.count
 		else
-			render json: {'error': 'cannot save location into database'}
+			render :json => {'error': 'cannot save location into database'}
 		end
 	end
 
