@@ -6,7 +6,7 @@ showLocation = (position) ->
   longitude = position.coords.longitude
   userId = $('button.start').data('id')
   $.ajax
-	  url: "https://fyp-lets-gather-data.herokuapp.com/users/#{userId}/locations"
+	  url: "https://www.fyp-lets-gather-data.herokuapp.com/users/#{userId}/locations"
 	  type: 'post'
 	  contentType: 'application/json'
 	  dataType: 'json'
