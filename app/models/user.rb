@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	validates :bus_num, presence: true
 	before_save :to_lowercase
 	has_many :locations, dependent: :destroy
+	has_many :stops, dependent: :destroy
 
 
 	def to_lowercase

@@ -1,0 +1,5 @@
+%h1 All Stops
+
+%ul
+	- @stops.each do |stop|
+		%li= link_to "#{stop.stop_name}", user_stop_path(@user, stop), class: 'btn btn-default btn-primary btn-block'

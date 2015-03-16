@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Stop.create(stop_name: 'Milinium')
+Stop.create(stop_name: 'drig road')
+Stop.create(stop_name: 'Natakhan')
+Stop.create(stop_name: 'Calony Gate')
