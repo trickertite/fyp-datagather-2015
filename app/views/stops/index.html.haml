@@ -2,4 +2,4 @@
 
 %ul
 	- @stops.each do |stop|
-		%li= link_to "#{stop.stop_name}", user_stop_path(@user, stop), class: 'btn btn-default btn-primary btn-block get-loc'
+		%li{class: 'btn btn-default btn-primary btn-block get-loc', onclick: 'getSingleLoc()', :data =>{:uid => @user.id, :sid => stop.id}} "#{stop.stop_name}"
