@@ -26,7 +26,7 @@ class StopsController < ApplicationController
 		if @user.stops.update(params[:id], stop_params)
 			render json: @user.locations.count
 		else
-			render :json => {'error': 'cannot save location into database'}
+			render :nothing
 		end
 	end
 
