@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 window.getSingleLoc = ->
-	geolocation()
+	getLocation()
 
 window.getLocation = ->
 	if navigator.geolocation
