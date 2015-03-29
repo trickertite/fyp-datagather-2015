@@ -3,9 +3,18 @@ geoLoc = undefined
 window.Interval = undefined
 
 window.getLocationUpdate = ->
-  window.Interval = setInterval (->
-    getLocation1()
-  ), 1000
+  if navigator.geolocation
+    options = 
+      enableHighAccuracy: true
+      timeout: 10000
+      maximumAge: 0
+    geoLoc = navigator.geolocation
+    watchID = geoLoc.watchPosition(showLocation, errorHandler, options)
+  else
+    alert 'Sorry, browser does not support geolocation!'
+  # window.Interval = setInterval (->
+  #   getLocation1()
+  # ), 1000
 
 window.getLocation1 = ->
   if navigator.geolocation
@@ -14,7 +23,7 @@ window.getLocation1 = ->
     alert 'Geolocation is not supported by this browser.'
   return
 
-showLocation = (position) ->
+window.showLocation = (position) ->
   latitude = position.coords.latitude
   longitude = position.coords.longitude
   userId = $('button.start').data('id')
@@ -30,4 +39,13 @@ showLocation = (position) ->
   console.log 'ok'
 
 window.stopWatch = ->
-  clearInterval window.Interval
+  geoLoc.clearWatch watchID
+# window.stopWatch = ->
+#   clearInterval window.Interval
+
+window.errorHandler = (err) ->
+  if err.code == 1
+    alert 'Error: Access is denied!'
+  else if err.code == 2
+    alert 'Error: Position is unavailable!'
+  return
