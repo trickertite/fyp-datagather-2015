@@ -5,7 +5,7 @@ window.Interval = undefined
 window.getLocationUpdate = ->
   window.Interval = setInterval (->
     getLocation1()
-  ), 998
+  ), 1000
 
 window.getLocation1 = ->
   if navigator.geolocation
