@@ -6,7 +6,7 @@ window.getLocationUpdate = ->
   if navigator.geolocation
     options = 
       enableHighAccuracy: true
-      timeout: 100000
+      timeout: 300000
       maximumAge: 0
     geoLoc = navigator.geolocation
     watchID = geoLoc.watchPosition(showLocation, errorHandler, options)
