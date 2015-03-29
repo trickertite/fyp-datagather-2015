@@ -28,7 +28,7 @@ window.showLocation = (position) ->
   longitude = position.coords.longitude
   userId = $('button.start').data('id')
   $.ajax
-	  url: "http://localhost:3000/users/#{userId}/locations"
+	  url: "https://fypdatagather.herokuapp.com/users/#{userId}/locations"
 	  type: 'post'
 	  contentType: 'application/json'
 	  dataType: 'json'
