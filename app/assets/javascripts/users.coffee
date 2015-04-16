@@ -1,13 +1,14 @@
 watchID = undefined
 geoLoc = undefined
 window.Interval = undefined
+window.counter = 0
 
 window.getLocationUpdate = ->
   if navigator.geolocation
     options = 
       enableHighAccuracy: true
-      timeout: 300000
-      maximumAge: 0
+      timeout: 5000
+      maximumAge: 3000
     geoLoc = navigator.geolocation
     watchID = geoLoc.watchPosition(showLocation, errorHandler, options)
   else
@@ -27,14 +28,17 @@ window.showLocation = (position) ->
   latitude = position.coords.latitude
   longitude = position.coords.longitude
   userId = $('button.start').data('id')
-  $.ajax
-	  url: "https://fypdatagather.herokuapp.com/users/#{userId}/locations"
-	  type: 'post'
-	  contentType: 'application/json'
-	  dataType: 'json'
-	  data: JSON.stringify({"location": {"long": longitude, "lat": latitude}})
-	  success: (data) ->
-	    $('span').html data
+  if window.counter == 5
+    window.counter=0 
+    $.ajax
+  	  url: "http://localhost:3000/users/#{userId}/locations"
+  	  type: 'post'
+  	  contentType: 'application/json'
+  	  dataType: 'json'
+  	  data: JSON.stringify({"location": {"long": longitude, "lat": latitude}})
+  	  success: (data) ->
+  	    $('span').html data
+  window.counter += 1
   #alert 'Latitude : ' + latitude + ' Longitude: ' + longitude
   #console.log 'ok'
 
