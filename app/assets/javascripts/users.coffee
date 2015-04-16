@@ -31,7 +31,7 @@ window.showLocation = (position) ->
   if window.counter == 5
     window.counter=0 
     $.ajax
-  	  url: "http://fypdatagather.herokuapp.com/users/#{userId}/locations"
+  	  url: "https://fypdatagather.herokuapp.com/users/#{userId}/locations"
   	  type: 'post'
   	  contentType: 'application/json'
   	  dataType: 'json'
